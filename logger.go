@@ -27,7 +27,7 @@ type SimpleLogger struct {
 }
 
 // NewLogger creates a new SimpleLogger instance
-func NewLogger(level Level, logFile string) (*SimpleLogger, error) {
+func NewLogger(logFile string) (*SimpleLogger, error) {
 	var writer *os.File
 	var err error
 	if logFile != "" {
@@ -38,7 +38,7 @@ func NewLogger(level Level, logFile string) (*SimpleLogger, error) {
 	} else {
 		writer = os.Stdout
 	}
-	return &SimpleLogger{level: level, writer: writer}, nil
+	return &SimpleLogger{level: LevelWarn, writer: writer}, nil
 }
 
 // SetLevel sets the minimum logging level
